@@ -38,8 +38,8 @@ export default async function Page() {
           Solução para a página do SiMaC.
         </h1>
         <p>
-          Uma alternativa para a página do SiMaC, que está malfuncionando há
-          meses. Os dados sao coletados a cada hora da{" "}
+          Uma alternativa para a página do SiMaC. Os dados sao coletados a cada
+          hora da{" "}
           <Link
             className="text-blue-500 hover:underline"
             href="https://pbqp-h.mdr.gov.br/sistemas/simac/empresas-qualificadas/"
