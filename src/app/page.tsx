@@ -5,7 +5,7 @@ import { DataTable } from "./data-table";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
-export const revalidate = 60 * 60 * 24; // 24 hours
+export const revalidate = 60; // 1 minute
 
 const instance = axios.create({
   baseURL: "https://pbqp-h.mdr.gov.br",
@@ -26,7 +26,10 @@ async function fetchApiData() {
 }
 
 export default async function Page() {
-  const data = (await fetchApiData()) as IResponse[] | null;
+  let data = (await fetchApiData()) as IResponse[] | null;
+  while (data === null) {
+    data = (await fetchApiData()) as IResponse[] | null;
+  }
 
   return (
     <div className="py-10 px-12">
