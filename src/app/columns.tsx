@@ -6,67 +6,67 @@ export const columns: ColumnDef<IResponse>[] = [
   {
     accessorKey: "psq",
     header: "PSQ",
-    minSize: 150,
+    id: "PSQ",
   },
   {
     accessorKey: "nome_da_empresa",
     header: "Nome da Empresa",
-    minSize: 150,
+    id: "Nome da Empresa",
   },
   {
     accessorKey: "cnpj",
     header: "CNPJ",
-    minSize: 150,
+    id: "CNPJ",
   },
   {
     accessorKey: "cidade",
     header: "Cidade",
-    minSize: 150,
+    id: "Cidade",
   },
   {
     accessorKey: "uf",
     header: "UF",
-    minSize: 150,
+    id: "UF",
   },
   {
     accessorKey: "produto_alvo",
     header: "Produto Alvo",
-    minSize: 150,
+    id: "Produto Alvo ",
   },
   {
     accessorKey: "ncm",
     header: "NCM",
-    minSize: 150,
+    id: "NCM ",
   },
   {
     accessorKey: "nome_comercial",
     header: "Nome Comercial",
-    minSize: 150,
+    id: "Nome Comercial",
   },
   {
     accessorKey: "marca",
     header: "Marca",
-    minSize: 150,
+    id: "Marca",
   },
   {
     accessorKey: "nome_egt",
     header: "Nome EGT",
-    minSize: 150,
+    id: "Nome EGT",
   },
   {
     accessorKey: "classificacao",
     header: "Classificação",
-    minSize: 150,
+    id: "Classificação",
   },
   {
     accessorKey: "validade",
     header: "Validade",
-    minSize: 150,
+    id: "Validade",
   },
   {
     accessorKey: "nome_entidade",
     header: "Nome Entidade",
-    minSize: 150,
+    id: "Nome Entidade",
   },
 ];
 

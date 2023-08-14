@@ -32,14 +32,11 @@ export default async function Page() {
   }
 
   return (
-    <div className="py-8 md:py-10 px-4 md:px-12">
-      <div className="flex flex-col gap-1 mb-4">
-        <h1 className="text-2xl font-semibold mb-4">
-          Solução para a página do SiMaC.
-        </h1>
+    <main className="h-screen">
+      <div className="py-8 md:py-10 px-4 md:px-12 flex flex-col gap-1 h-full">
+        <h1 className="text-2xl font-semibold">Página Alternativa do SiMaC.</h1>
         <p>
-          Uma alternativa para a página do SiMaC. Os dados sao coletados a cada
-          hora da{" "}
+          Os dados sao coletados a cada hora da{" "}
           <Link
             className="text-blue-500 hover:underline"
             href="https://pbqp-h.mdr.gov.br/sistemas/simac/empresas-qualificadas/"
@@ -49,11 +46,8 @@ export default async function Page() {
           </Link>
           .
         </p>
-        <p className="font-medium">
-          Utilize Ctrl + F para pesquisar elementos específicos.
-        </p>
-        <div className="mr-auto">
-          <Badge className="mt-2 rounded-full">
+        <div className="mr-auto mb-2">
+          <Badge variant="outline" className="mt-2 rounded-full">
             <Link
               className="hover:underline font-medium"
               href="https://github.com/adomaitisc/solucao-simac"
@@ -63,14 +57,14 @@ export default async function Page() {
             </Link>
           </Badge>
         </div>
+        {data ? (
+          <>
+            <DataTable columns={columns} data={data} />
+          </>
+        ) : (
+          <p>Desculpe, houve um erro ao carregar os dados do SiMaC.</p>
+        )}
       </div>
-      {data ? (
-        <>
-          <DataTable columns={columns} data={data} />
-        </>
-      ) : (
-        <p>Desculpe, houve um erro ao carregar os dados do SiMaC.</p>
-      )}
-    </div>
+    </main>
   );
 }
