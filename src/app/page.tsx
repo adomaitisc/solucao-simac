@@ -20,10 +20,10 @@ async function fetchApiData() {
     const response = await instance.get(
       "/sistemas/simac/empresas-qualificadas/?tabela=show"
     );
-    console.log("fetch success");
+    console.log("> Fetch from API - OK");
     return response.data;
   } catch (error) {
-    console.log("fetch failed");
+    console.log("> Fetch from API - Failed");
     return null;
   }
 }
@@ -56,7 +56,7 @@ export default async function Page() {
   const csv = generateCsv(data);
 
   return (
-    <main className="h-screen">
+    <main className="pb-24">
       <div className="py-8 md:py-10 px-4 md:px-12 flex flex-col gap-1 h-full">
         <div className="flex flex-col md:flex-row justify-start items-start md:justify-between gap-1">
           <div className="flex flex-col gap-1">
