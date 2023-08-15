@@ -20,6 +20,7 @@ async function fetchApiData() {
     const response = await instance.get(
       "/sistemas/simac/empresas-qualificadas/?tabela=show"
     );
+    console.log("fetch success");
     return response.data;
   } catch (error) {
     console.log("fetch failed");
