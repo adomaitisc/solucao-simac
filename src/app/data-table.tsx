@@ -1,6 +1,6 @@
 "use client";
 
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 
 import {
   ColumnDef,
@@ -26,6 +26,7 @@ import {
 import { ChevronDownIcon, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -36,7 +37,16 @@ export function DataTable<TData, TValue>({
   columns,
   data,
   csv,
-}: DataTableProps<TData, TValue> & { csv: any }) {
+}: DataTableProps<TData | any, TValue> & { csv: any }) {
+  function handleDownload() {
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.getElementById("download-csv") as HTMLAnchorElement;
+    link.href = url;
+    link.download = "simac.csv";
+    link.click();
+  }
+
   const table = useReactTable({
     data,
     columns,
@@ -80,11 +90,18 @@ export function DataTable<TData, TValue>({
                 })}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button asChild className="font-normal rounded-xl">
-            <CSVLink data={csv} download="simac.csv" target="_self">
-              Baixar CSV
-              <Download size={14} className="ml-2" />
-            </CSVLink>
+          <Link
+            id="download-csv"
+            href="#"
+            target="_blank"
+            className="flex gap-3 items-center absolute opacity-0"
+          />
+          <Button
+            onClick={() => handleDownload()}
+            className="font-normal rounded-xl flex gap-3 items-center"
+          >
+            Baixar CSV
+            <Download size={14} className="ml-2" />
           </Button>
         </div>
       </div>

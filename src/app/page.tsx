@@ -28,32 +28,13 @@ async function fetchApiData() {
   }
 }
 
-function generateCsv(data: IResponse[]) {
-  // make header
-  const header = Object.keys(data[0]).join(",");
-  const rows = [];
-
-  for (let i = 0; i < 5; i++) {
-    let row = Object.values(data[i]).join(",");
-
-    // remove line breaks
-    row = row.replace(/(\r\n|\n|\r)/gm, "");
-
-    rows.push(row);
-  }
-
-  const csv = [header, ...rows].join("\n");
-
-  return csv;
-}
-
 export default async function Page() {
   let data = (await fetchApiData()) as IResponse[] | null;
   while (data === null) {
     data = (await fetchApiData()) as IResponse[] | null;
   }
 
-  const csv = generateCsv(data);
+  const csv = parse(data);
 
   return (
     <main className="pb-24">
